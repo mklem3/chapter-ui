@@ -34,7 +34,7 @@ export class ActionsTable extends React.Component {
     return (
       <div>
         Actions
-        <Table.Body>
+        <Table>
           <Table.Head>
             <Table.TextCell flexBasis={560} flexShrink={0} flexGrow={0}>
               Name
@@ -53,7 +53,7 @@ export class ActionsTable extends React.Component {
               </Table.Row>
             ))}
           </Table.Body>
-        </Table.Body>
+        </Table>
       </div>
     );
   }
