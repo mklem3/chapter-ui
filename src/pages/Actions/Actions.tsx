@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ActionsTable from '../../components/ActionsTable'
-class Home extends React.Component {
+class Actions extends React.Component {
   public render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Actions;

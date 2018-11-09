@@ -87,6 +87,10 @@ class ChapterStore {
   public addChapter = () => {
     this.chapters.push({ id: this.chapters.length + 1, users: [], date: new Date() })
   }
+  public loadChapters = async () => {
+    // const data =  { test: 1}//await getChapters();
+    // this.chapters = [...data];
+  }
 }
 
 export default ChapterStore;

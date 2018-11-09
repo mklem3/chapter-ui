@@ -18,6 +18,7 @@
 .header-title {
   border-right: 1px solid lightgray;
   padding-right: 2rem;
+  
 }
 
 .header-option {
@@ -25,9 +26,16 @@
   cursor: pointer;
   transform: scale(1);
   transition: transform .2s;
+  text-align: center;
+  text-indent: 0;
+  width: 100px;
+}
+
+.header-option-selected {
+ color: #1c3e94;
+ font-weight: 600;
 }
 
 .header-option:hover {
   transform: scale(1.2);
-  color: rgba(0,0,0,.8);
 }

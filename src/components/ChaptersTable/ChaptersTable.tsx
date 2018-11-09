@@ -8,7 +8,7 @@ interface InjectedProps {
 
 @inject('store')
 @observer
-export class ChapterTable extends React.Component {
+export class ChaptersTable extends React.Component {
 
   private get injected() {
     return this.props as InjectedProps
@@ -36,4 +36,4 @@ export class ChapterTable extends React.Component {
   }
 }
 
-export default ChapterTable;
+export default ChaptersTable;

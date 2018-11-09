@@ -26,8 +26,8 @@ class Header extends React.Component<HeaderProps> {
           <span className="header-title">{title}</span>
         </Link>
         {options.map(option => (
-          <Link to={'/' + option.route}>
-            <div className="header-option">{option.title}</div>
+          <Link to={'/' + option.route} key={option.route}>
+            <div className={`header-option ${window.location.href.includes(option.route) ? 'header-option-selected' : ''}`}>{option.title}</div>
           </Link>
         ))}
       </div>
