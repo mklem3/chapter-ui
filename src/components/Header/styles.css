@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  text-indent: 2rem;
+  background-color: white;
+  box-shadow: 1px 2px 10px 0px rgba(0,0,0,.2);
+  margin-bottom: 1rem;
+  font-size: 22px;
+}
+
+.header-icon {
+  padding-left: 1rem;
+  width: 40px;
+}
+
+.header-title {
+  border-right: 1px solid lightgray;
+  padding-right: 2rem;
+}
+
+.header-option {
+  font-size: 16px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform .2s;
+}
+
+.header-option:hover {
+  transform: scale(1.2);
+  color: rgba(0,0,0,.8);
+}
