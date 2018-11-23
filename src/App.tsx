@@ -1,23 +1,53 @@
 import * as React from 'react';
-
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
-import Header from './components/Header';
-import Home from './pages/Home';
+
 import { chapterStore } from './mobx/chapterStore';
 
+import Header from './components/Header';
+import Actions from './pages/Actions';
+import Issues from './pages/Issues';
+import Chapters from './pages/Chapters';
+
+import HeaderOption from './data/ui/header-option';
+
+import './App.css';
+
 const store = chapterStore;
+store.loadChapters();
 
 const renderHome = () => {
-	return <Home />;
+	return <div>HELLO</div>;
 };
+
+const renderChapters = () => {
+	return <Chapters />;
+};
+
+const renderIssues = () => {
+	return <Issues />;
+};
+
+const renderActions = () => {
+	return <Actions />;
+};
+
+
+const headerOptions : HeaderOption[] = [
+  { title: 'Chapters', route: 'chapters' },
+  { title: 'Issues', route: 'issues'},
+  { title: 'Actions', route: 'actions'}
+];
 
 const App = () =>
     <Provider store={store}>
       <main>
-        <Header />
+        <Header title='Frontend Chaper UI' options={headerOptions} />
         <Switch>
           <Route exact={true} path="/" render={renderHome} />
+          <Route exact={true} path="/chapters" render={renderChapters} />
+          <Route exact={true} path="/issues" render={renderIssues} />
+          <Route exact={true} path="/actions" render={renderActions} />
         </Switch>
       </main>
     </Provider>;

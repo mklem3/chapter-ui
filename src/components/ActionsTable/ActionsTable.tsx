@@ -32,8 +32,6 @@ export class ActionsTable extends React.Component {
     const { actions } = store;
 
     return (
-      <div>
-        Actions
         <Table>
           <Table.Head>
             <Table.TextCell flexBasis={560} flexShrink={0} flexGrow={0}>
@@ -44,7 +42,7 @@ export class ActionsTable extends React.Component {
           </Table.Head>
           <Table.Body>
             {actions.map(action => (
-              <Table.Row intent={this.mapStatusToIntent(action.status)}>
+              <Table.Row key={action.id} intent={this.mapStatusToIntent(action.status)}>
                 <Table.TextCell flexBasis={560} flexShrink={0} flexGrow={0}>
                   {action.name}
                 </Table.TextCell>
@@ -54,7 +52,6 @@ export class ActionsTable extends React.Component {
             ))}
           </Table.Body>
         </Table>
-      </div>
     );
   }
 }
