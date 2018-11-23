@@ -2,7 +2,7 @@ import * as React from 'react';
 import ActionsTable from '../../components/ActionsTable';
 import FloatingActionButton from '../../components/FloatingAtionButton';
 
-class Actions extends React.Component {
+class Issues extends React.Component {
   public render() {
     return (
       <div>
@@ -13,4 +13,4 @@ class Actions extends React.Component {
   }
 }
 
-export default Actions;
+export default Issues;

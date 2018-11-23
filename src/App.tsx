@@ -6,11 +6,12 @@ import { chapterStore } from './mobx/chapterStore';
 
 import Header from './components/Header';
 import Actions from './pages/Actions';
+import Issues from './pages/Issues';
+import Chapters from './pages/Chapters';
 
 import HeaderOption from './data/ui/header-option';
 
 import './App.css';
-import Chapters from './pages/Chapters/Chapters';
 
 const store = chapterStore;
 store.loadChapters();
@@ -21,6 +22,10 @@ const renderHome = () => {
 
 const renderChapters = () => {
 	return <Chapters />;
+};
+
+const renderIssues = () => {
+	return <Issues />;
 };
 
 const renderActions = () => {
@@ -41,6 +46,7 @@ const App = () =>
         <Switch>
           <Route exact={true} path="/" render={renderHome} />
           <Route exact={true} path="/chapters" render={renderChapters} />
+          <Route exact={true} path="/issues" render={renderIssues} />
           <Route exact={true} path="/actions" render={renderActions} />
         </Switch>
       </main>

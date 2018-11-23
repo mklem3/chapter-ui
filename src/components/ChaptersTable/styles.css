@@ -1,0 +1,6 @@
+.chapters-table-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 0px 10px; 
+}

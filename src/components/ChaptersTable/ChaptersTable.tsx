@@ -2,6 +2,9 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import ChapterStore from "../../mobx/chapterStore";
 
+import ChaptersTableItem from "../ChaptersTableItem";
+import './styles.css';
+
 interface InjectedProps {
   store: ChapterStore
 }
@@ -14,24 +17,20 @@ export class ChaptersTable extends React.Component {
     return this.props as InjectedProps
   }
 
-  private onClick = () => {
-    const { store } = this.injected;
-    store.addChapter();
-  }
-
   public render() {
     const { store } = this.injected;
 
     const { chapters } = store;
 
-    return <div>
-      This is the Chapter Table
-      {chapters.map(chapter => (
-        <div>This is chapter: {chapter.id}</div>
+    return <div className={'chapters-table-container'}>
+      {
+        chapters.length === 0 && (<div>
+          There are no currently no chapters
+        </div>)
+      }
+      {chapters.length > 0 && chapters.map(chapter => (
+        <ChaptersTableItem key={`chapter_${chapter.id}`} chapter={chapter} store={store} />
       ))}
-      <button onClick={this.onClick}>
-        Add Chapter
-      </button>
     </div>
   }
 }

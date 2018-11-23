@@ -7,7 +7,21 @@
   background-color: #1c3e94;
   border-radius: 100%;
   box-shadow: 1px 2px 10px 0px rgba(0,0,0,.2);
-  font-size: 30px;
+  font-size: 40px;
+  line-height: 60px;
+  vertical-align: middle;
   color: white;
   text-align: center;
+  transform: scale(1);
+  animation-name: fab-in;
+  animation-duration: .2s;
+}
+
+@keyframes fab-in {
+  from {transform: scale(0);}
+  to {transform: scale(1);}
+}
+
+.fab:hover {
+  cursor: pointer;
 }
