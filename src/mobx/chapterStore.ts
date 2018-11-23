@@ -88,11 +88,16 @@ class ChapterStore {
     this.chapters.push({ id: 0, users: [], date: new Date() })
   }
 
+
   public removeChapter = (chapterId: number) => {
     const chapterIndex = this.chapters.findIndex(chapter => chapter.id === chapterId);
     this.chapters.splice(chapterIndex, 1);
   }
-
+  
+  public chapter = (id: number): Chapter | undefined => {
+    const foundChapter = this.chapters.find((chapter: Chapter) => chapter.id === id)
+    return foundChapter
+  }
   public loadChapters = async () => {
     // const data =  { test: 1}//await getChapters();
     // this.chapters = [...data];

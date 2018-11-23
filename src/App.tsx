@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Actions from './pages/Actions';
 import Issues from './pages/Issues';
 import Chapters from './pages/Chapters';
+import Chapter from './pages/Chapter';
 
 import HeaderOption from './data/ui/header-option';
 
@@ -32,6 +33,9 @@ const renderActions = () => {
 	return <Actions />;
 };
 
+const renderChapter = ({ match }: any) => {
+  return <Chapter id={match.params.id}/>
+}
 
 const headerOptions : HeaderOption[] = [
   { title: 'Chapters', route: 'chapters' },
@@ -46,6 +50,7 @@ const App = () =>
         <Switch>
           <Route exact={true} path="/" render={renderHome} />
           <Route exact={true} path="/chapters" render={renderChapters} />
+          <Route exact={false} path="/chapter/:id" render={renderChapter} />
           <Route exact={true} path="/issues" render={renderIssues} />
           <Route exact={true} path="/actions" render={renderActions} />
         </Switch>
