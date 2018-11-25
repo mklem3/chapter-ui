@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 import HeaderOption from '../../data/ui/header-option';
 import './styles.css';
 
-interface HeaderProps {
+interface HeaderProps extends RouteComponentProps<any> {
   title: string;
   options: HeaderOption[];
 }
@@ -22,17 +23,15 @@ class Header extends React.Component<HeaderProps> {
           className="header-icon"
           src="https://www.comparethemarket.com.au/wp-content/themes/ctm/images/ctm-primary-logo-icon.svg"
         />
-        <Link to={'/'}>
-          <span className="header-title">{title}</span>
-        </Link>
+        <NavLink to={'/'} className="header-title">{title}</NavLink>
         {options.map(option => (
-          <Link to={'/' + option.route} key={option.route}>
-            <div className={`header-option ${window.location.href.includes(option.route) ? 'header-option-selected' : ''}`}>{option.title}</div>
-          </Link>
+            <NavLink to={'/' + option.route} key={option.route} 
+            activeClassName='header-option-selected'
+            className={'header-option'}>{option.title}</NavLink>
         ))}
       </div>
     );
   }
 }
 
-export default Header;
+export default withRouter<HeaderProps>(Header);
