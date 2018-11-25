@@ -7,6 +7,7 @@ import DoneIcon from 'mdi-react/DoneIcon';
 import ChapterStore, { Chapter } from "src/mobx/chapterStore";
 
 import './styles.css';
+import { PieChart, Pie } from "recharts";
 
 interface ChaptersTableItemProps {
   chapter: Chapter;
@@ -72,6 +73,8 @@ export class ChaptersTableItem extends React.Component<ChaptersTableItemProps, C
     const { chapter } = this.props;
     const { editMode } = this.state;
 
+    const users = [{ value: 2, name: 'Test' },  { value: 10, name: 'Test2' }]
+
     return (
     <div className={'chapters-table-item'} ref={this.itemRef}>
       <div className={'chapters-table-item-content'}>
@@ -80,6 +83,9 @@ export class ChaptersTableItem extends React.Component<ChaptersTableItemProps, C
       </div>
      {!editMode && this.renderEditOptions()}
      {editMode && this.renderEditingOptions()}
+     <PieChart width={150} height={150} >
+      <Pie data={users} dataKey="value" nameKey="name" fill="#8884d8" label={true} />
+     </PieChart>
     </div>
     );
   }

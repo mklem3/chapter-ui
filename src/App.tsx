@@ -15,6 +15,8 @@ import './App.css';
 
 const store = chapterStore;
 store.loadChapters();
+store.loadActions();
+store.loadIssues();
 
 const renderHome = () => {
 	return <div>HELLO</div>;
