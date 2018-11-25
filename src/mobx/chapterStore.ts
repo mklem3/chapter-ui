@@ -1,17 +1,21 @@
 import { observable } from 'mobx';
+import { allChapters } from 'src/api/allChapters';
+import { allActions } from 'src/api/allActions';
+import { allIssues } from 'src/api/allIssues';
 
 export interface Chapter {
   id: number;
-  users: User[];
+  users: UserChapter[];
   date: Date;
 }
 
 export interface Issue {
   id: number;
   title: string;
+  status: 'resolved' | 'cancelled' | 'pending';
   description: string;
-  created: Date;
-  lastUpdated: Date;
+  createdAt: string;
+  lastUpdated: string;
   completed: boolean;
 }
 
@@ -22,7 +26,7 @@ export interface Event {
   lastUpdated: Date;
 }
 
-export interface User {
+export interface UserChapter {
   id: number;
   firstName: string;
   lastName: string;
@@ -46,43 +50,13 @@ export interface Action {
 
 class ChapterStore {
   @observable
-  public chapters: Chapter[] = [{ id: 1, users: [], date: new Date() }];
+  public chapters: Chapter[] = [];
 
   @observable
-  public actions: Action[] = [
-    {
-      id: 1,
-      status: 'resolved',
-      name: 'Fix linting issues in Habitat Project',
-      createdAt: 'Yesterday',
-      updatedAt: 'now',
-      deletedAt: null
-    },
-    {
-      id: 2,
-      status: 'pending',
-      name: 'Teach Louis how to write proper code',
-      createdAt: '2 weeks ago',
-      updatedAt: '2 weeks ago',
-      deletedAt: null
-    },
-    {
-      id: 3,
-      status: 'cancelled',
-      name: 'Resolve commitizen issues',
-      createdAt: 'Yesterday',
-      updatedAt: 'now',
-      deletedAt: null
-    },
-    {
-      id: 4,
-      status: 'pending',
-      name: 'improve PR attendance',
-      createdAt: 'Yesterday',
-      updatedAt: 'now',
-      deletedAt: null
-    }
-  ];
+  public actions: Action[] = [];
+
+  @observable
+  public issues: Issue[] = [];
 
   public addChapter = () => {
     this.chapters.push({ id: 0, users: [], date: new Date() })
@@ -94,8 +68,18 @@ class ChapterStore {
   }
 
   public loadChapters = async () => {
-    // const data =  { test: 1}//await getChapters();
-    // this.chapters = [...data];
+    const data =  await allChapters();
+    this.chapters = [...data.allChapters];
+  }
+
+  public loadActions = async () => {
+    const data =  await allActions();
+    this.actions = [...data.allActions];
+  }
+
+  public loadIssues = async () => {
+    const data =  await allIssues();
+    this.issues = [...data.allIssues];
   }
 }
 
